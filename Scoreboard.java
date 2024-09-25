@@ -1,33 +1,34 @@
 public class Scoreboard {
+    private String teamOne;
+    private String teamTwo;
+    private int teamOneScore;
+    private int teamTwoScore;
     private String activeTeam;
-    private String team1;
-    private String team2;
-    private int score1;
-    private int score2;
 
-    public scoreboard.Scoreboard(String team1, String team2){
-        activeTeam = team1;
+    public Scoreboard(String one, String two){
+        teamOne = one;
+        teamTwo = two;
+        activeTeam = teamOne;
     }
 
-    public void recordPlay(int points){
-        if (points > 0 && activeTeam == team1){
-            score1+=points;
+    public void recordPlay(int score){
+        if (score > 0 && activeTeam == teamOne){
+            teamOneScore+=score;
         }
-        if (points > 0 && activeTeam == team2){
-            score2+=points;
+        if (score > 0 && activeTeam == teamTwo){
+            teamTwoScore+=score;
         }
-        if (points == 0){
-            if (activeTeam == team1){
-                activeTeam = team2;
+        if (score == 0){
+            if (activeTeam == teamOne){
+                activeTeam = teamTwo;
             }
             else{
-                activeTeam = team1;
+                activeTeam = teamOne;
             }
         }
     }
 
     public String getScore(){
-        String score = score1 + " - " + score2 + " - " + activeTeam;
-        return score;
+        return teamOneScore + "-" + teamTwoScore + "-" + activeTeam;
     } 
 }
